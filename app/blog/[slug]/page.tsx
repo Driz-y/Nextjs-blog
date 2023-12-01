@@ -2,7 +2,7 @@ import React from 'react'
 import { getBlogBySlug } from '@/sanity/sanity-utils'
 import Header from '../../components/Header'
 import Image from 'next/image'
-import { PortableText } from '@portabletext/react'
+import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 
 export default async function page({ params }) {
     const { slug } = params;
@@ -16,12 +16,12 @@ export default async function page({ params }) {
         day: 'numeric',
     })
 
-    const components = {
+    const components: Partial<PortableTextReactComponents> = {
         block: {
             normal: ({ children }) => <p className='text-lg my-8'>{children}</p>,
             h1: ({ children }) => <h1 className='text-4xl font-bold my-8'>{children}</h1>,
             h2: ({ children }) => <h2 className='text-4xl font-bold my-8'>{children}</h2>,
-            blockquote: ({ children }) => <blockquote className="text-2xl italic my-8"> {children} </blockquote>
+            blockquote: ({ children }) => <blockquote className="text-2xl italic my-8"> {children} </blockquote>,
         },
     }
 
